@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.techouts.hibernate.pojo.Payment" table="Payment">
+		<id name="payId">
+			<generator class="assigned"></generator>
+		</id>
+	 	<property name="amount"></property>
+	 	
+		<union-subclass name="com.techouts.hibernate.pojo.CreditCard" table="CreditCard1">
+			<property name="cardType"></property>
+		</union-subclass>
+		
+		<union-subclass name="com.techouts.hibernate.pojo.ChequePayment" table="Cheque1">
+			<property name="chequetype"></property>
+		</union-subclass>
+	</class>
+</hibernate-mapping>
